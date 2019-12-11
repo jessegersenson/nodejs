@@ -10,8 +10,12 @@ RUN adduser nonrootuser
 ARG region
 ARG key
 ARG secret
-RUN yum install git -y 
 COPY src /usr/src/app/src
+COPY ssh/* /home/nonrootuser/.ssh/
+RUN chown nonrootuser:nonrootuser /home/nonrootuser/.ssh/*
+RUN chmod 700 /home/nonrootuser/.ssh
+RUN chmod 600 /home/nonrootuser/.ssh/*
+RUN yum install git -y 
 
 ARG WORKING_DIR='/usr/src/app/src'
 WORKDIR "$WORKING_DIR"
