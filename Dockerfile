@@ -10,6 +10,7 @@ RUN adduser nonrootuser
 ARG region
 ARG key
 ARG secret
+RUN yum install git -y 
 COPY src /usr/src/app/src
 
 ARG WORKING_DIR='/usr/src/app/src'
